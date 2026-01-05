@@ -1,4 +1,20 @@
-.banner-placeholder { width: 100%; height: 400rpx; background: #ddd; display: flex; align-items: center; justify-content: center; }
-.content { padding: 40rpx; }
-.main-title { font-size: 56rpx; font-weight: bold; color: #333; }
-.start-btn { margin-top: 60rpx; background: #8B0000; color: white; border-radius: 50rpx; width: 80% !important; }
+.container { background-color: #fcfcfc; min-height: 100vh; }
+.banner { width: 100%; height: 450rpx; }
+
+.content-box { padding: 40rpx; display: flex; flex-direction: column; align-items: center; }
+.title { font-size: 42rpx; font-weight: bold; color: #333; margin-bottom: 10rpx; }
+.tag { font-size: 24rpx; color: #a00; border: 1rpx solid #a00; padding: 4rpx 12rpx; border-radius: 4rpx; margin-bottom: 30rpx; }
+
+.intro-section { background: #fff; padding: 30rpx; border-radius: 12rpx; box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.05); margin-bottom: 50rpx; }
+.intro-text { font-size: 28rpx; color: #666; line-height: 1.6; text-align: justify; }
+
+/* 核心按钮样式 */
+.primary-btn {
+  width: 80% !important;
+  background-color: #a00; /* 北京红 */
+  color: white;
+  border-radius: 50rpx;
+  font-weight: 500;
+  box-shadow: 0 8rpx 15rpx rgba(160, 0, 0, 0.2);
+  transition: all 0.3s;
+}

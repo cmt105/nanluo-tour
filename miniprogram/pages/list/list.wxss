@@ -1,1 +1,31 @@
-/* pages/list/list.wxss */
+.container { background-color: #f8f8f8; min-height: 100vh; padding: 20rpx; }
+.search-input { background: #fff; padding: 20rpx; border-radius: 40rpx; margin-bottom: 30rpx; border: 1rpx solid #ddd; }
+
+.poi-item {
+  display: flex;
+  background: #fff;
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+  border-radius: 15rpx;
+  box-shadow: 0 4rpx 10rpx rgba(0,0,0,0.05);
+}
+
+/* 必须明确设置宽高，否则 image 默认可能为 0 */
+.poi-img {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 10rpx;
+  flex-shrink: 0; /* 防止被挤压 */
+  background-color: #eee; /* 图片未加载时的占位色 */
+}
+
+.poi-content {
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.poi-name { font-size: 32rpx; font-weight: bold; color: #333; }
+.poi-address { font-size: 26rpx; color: #666; }
+.poi-type { font-size: 22rpx; color: #a00; background: #fff1f1; padding: 2rpx 10rpx; width: fit-content; border-radius: 4rpx; }

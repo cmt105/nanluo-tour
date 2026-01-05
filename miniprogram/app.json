@@ -7,16 +7,36 @@
   "window": {
     "navigationBarBackgroundColor": "#8B0000",
     "navigationBarTitleText": "南锣鼓巷智慧导览",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "light"
   },
   "tabBar": {
     "color": "#999999",
     "selectedColor": "#8B0000",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
     "list": [
-      { "pagePath": "pages/index/index", "text": "概览" },
-      { "pagePath": "pages/list/list", "text": "发现" },
-      { "pagePath": "pages/user/user", "text": "我的" }
+      {
+        "pagePath": "pages/index/index",
+        "text": "概览",
+        "iconPath": "images/tab/home.png",
+        "selectedIconPath": "images/tab/home_active.png"
+      },
+      {
+        "pagePath": "pages/list/list",
+        "text": "发现",
+        "iconPath": "images/tab/list.png",
+        "selectedIconPath": "images/tab/list_active.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "images/tab/user.png",
+        "selectedIconPath": "images/tab/user_active.png"
+      }
     ]
   },
-  "cloud": true
+  "cloud": true,
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
 }

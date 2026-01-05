@@ -1,1 +1,21 @@
-/* pages/user/user.wxss */
+.user-container { background-color: #f8f8f8; min-height: 100vh; padding-top: 20rpx; }
+.user-card { 
+  background-color: #A00000; color: white; margin: 20rpx; padding: 60rpx 40rpx;
+  border-radius: 20rpx; display: flex; align-items: center;
+}
+.avatar-box { 
+  width: 120rpx; height: 120rpx; border-radius: 60rpx; 
+  overflow: hidden; border: 4rpx solid rgba(255,255,255,0.3);
+}
+.user-info { margin-left: 30rpx; }
+.nickname { font-size: 36rpx; font-weight: bold; display: block; }
+.user-id { font-size: 24rpx; opacity: 0.8; margin-top: 10rpx; }
+
+.menu-list { background: white; margin-top: 40rpx; }
+.menu-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 30rpx 40rpx; border-bottom: 1rpx solid #eee;
+}
+.menu-left { display: flex; align-items: center; font-size: 30rpx; color: #333; }
+.icon { margin-right: 20rpx; font-size: 36rpx; }
+.arrow { color: #ccc; font-size: 30rpx; }
