@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="banner-placeholder">南锣鼓巷全景图</view>
+  
+  <view class="content">
+    <view class="header-info">
+      <text class="main-title">南锣鼓巷</text>
+      <text class="sub-title">元代古街 · 北京地标</text>
+    </view>
+
+    <view class="intro-section">
+      <view class="section-label">简介</view>
+      <text class="intro-text">始建于元代，是北京最古老的街区之一。作为我国唯一完整保存着元代府邸、院落构造最大的棋盘式传统民居区... [cite: 9, 79]</text>
+    </view>
+
+    <view class="stats-bar">
+      <view class="stat"><text class="num">8</text><text class="lab">核心点</text></view>
+      <view class="stat"><text class="num">2h</text><text class="lab">建议时长</text></view>
+    </view>
+
+    <button class="start-btn" bindtap="goToList">开启数字导览</button>
+  </view>
+</view>

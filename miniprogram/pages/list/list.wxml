@@ -1,0 +1,12 @@
+<view class="list-page">
+  <view class="search-box">搜索景点 (如“齐白石”)... [cite: 22]</view>
+  <view class="poi-list">
+    <view wx:for="{{poiList}}" wx:key="id" class="poi-card">
+      <view class="poi-img-mock"></view>
+      <view class="poi-info">
+        <text class="poi-name">{{item.name}}</text>
+        <text class="poi-addr">{{item.address}}</text>
+      </view>
+    </view>
+  </view>
+</view>

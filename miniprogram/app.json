@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/list/list",
+    "pages/user/user"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#8B0000",
+    "navigationBarTitleText": "南锣鼓巷智慧导览",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#8B0000",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "概览" },
+      { "pagePath": "pages/list/list", "text": "发现" },
+      { "pagePath": "pages/user/user", "text": "我的" }
+    ]
+  },
+  "cloud": true
+}
