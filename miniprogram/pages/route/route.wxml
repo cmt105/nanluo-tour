@@ -1,16 +1,20 @@
-<view class="route-page">
-  <view class="route-header">
-    <text class="route-title">{{routeName}}</text>
-  </view>
-  <view class="timeline">
-    <view class="time-item" wx:for="{{pathNodes}}" wx:key="index">
-      <view class="node-left">
-        <view class="dot"></view>
-        <view class="line" wx:if="{{index < pathNodes.length - 1}}"></view>
-      </view>
-      <view class="node-right">
-        <text class="node-name">{{item.name}}</text>
-        <text class="node-info">{{item.info}}</text>
+<view class="route-container">
+  <view class="route-section" wx:for="{{routes}}" wx:key="_id" wx:for-item="route">
+    <view class="route-header">
+      <text class="route-title">{{route.routeName}}</text>
+      <text class="route-intro">{{route.intro}}</text>
+    </view>
+
+    <view class="timeline">
+      <view class="node" wx:for="{{route.points}}" wx:key="index" bindtap="goToDetail" data-id="{{item.poiId}}">
+        <view class="dot-line">
+          <view class="dot"></view>
+          <view class="line" wx:if="{{index < route.points.length - 1}}"></view>
+        </view>
+        <view class="info-card">
+          <text class="node-name">{{item.name}}</text>
+          <text class="node-tip">{{item.tip}} (点击看详情)</text>
+        </view>
       </view>
     </view>
   </view>

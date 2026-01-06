@@ -16,9 +16,9 @@
       <view 
         class="poi-item" 
         wx:for="{{pois}}" 
-        wx:key="_id" 
+        wx:key="id" 
         bindtap="goToDetail" 
-        data-id="{{item._id}}"
+        data-id="{{item.id}}" 
       >
         <image class="poi-img" src="{{item.img}}" mode="aspectFill"></image>
         

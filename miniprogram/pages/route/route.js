@@ -1,11 +1,35 @@
+const db = wx.cloud.database();
+
 Page({
   data: {
-    routeName: "南锣文脉·名人故居之旅",
-    pathNodes: [
-      { name: "南锣鼓巷南口", info: "起点/地标性牌楼" },
-      { name: "齐白石旧居纪念馆", info: "晚清风格三进四合院" },
-      { name: "茅盾故居", info: "文学巨匠生活足迹" },
-      { name: "僧格林沁王府", info: "晚清王府规制展示" }
-    ]
+    routes: [] // 初始为空，由云数据库填充
+  },
+
+  onLoad: function () {
+    this.getRouteData();
+  },
+
+  // 核心功能：从云数据库获取动态路线
+  getRouteData: function() {
+    wx.showLoading({ title: '加载中...' });
+    db.collection('routes').get().then(res => {
+      this.setData({
+        routes: res.data
+      });
+      wx.hideLoading();
+    }).catch(err => {
+      console.error("路线获取失败", err);
+      wx.hideLoading();
+    });
+  },
+
+  // 交互功能：点击路线节点跳转至对应的景点详情
+  goToDetail: function(e) {
+    const id = e.currentTarget.dataset.id;
+    if (id) {
+      wx.navigateTo({
+        url: `/pages/detail/detail?id=${id}` 
+      });
+    }
   }
 })

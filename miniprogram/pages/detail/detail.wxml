@@ -1,14 +1,35 @@
 <view class="detail-container">
-  <image class="detail-img" src="{{poi.img}}" mode="aspectFill"></image>
-  <view class="detail-content">
-    <view class="head-row">
-      <text class="name">{{poi.name}}</text>
-      <text class="tag">{{poi.type}}</text>
+  <image 
+    class="top-img" 
+    src="{{poi.img}}" 
+    mode="aspectFill" 
+    bindtap="previewImage"
+  ></image>
+
+  <view class="main-card">
+    <view class="poi-head">
+      <text class="p-name">{{poi.name}}</text>
+      <text class="p-tag">{{poi.type}}</text>
     </view>
-    <text class="address">📍 地址：{{poi.address}}</text>
+    
+    <text class="p-address">📍 地址：{{poi.address}}</text>
     <view class="divider"></view>
-    <text class="section-title">景点详情</text>
-    <text class="description">{{poi.desc}}</text>
+
+    <view class="section">
+      <view class="s-title">景点介绍</view>
+      <text class="s-content">{{poi.desc}}</text>
+    </view>
+
+    <view class="section info-section">
+      <view class="s-title">游览提醒</view>
+      <view class="info-item">🕗 建议用时：1-2 小时</view>
+      <view class="info-item">🎫 门票：免费 (部分展馆需预约)</view>
+      <view class="info-item">🚌 交通：地铁8号线/6号线南锣鼓巷站</view>
+    </view>
+
+    <button 
+      class="fav-btn {{isFav ? 'is-fav' : ''}}" 
+      bindtap="onFavorite"
+    >{{isFav ? '❤️ 已收藏' : '⭐ 收藏此地'}}</button>
   </view>
-  <button class="fav-btn">收藏此景点</button>
 </view>

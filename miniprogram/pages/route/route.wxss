@@ -1,1 +1,20 @@
 /* pages/route/route.wxss */
+.route-container { padding: 40rpx; background-color: #fcfcfc; min-height: 100vh; }
+.route-header { margin-bottom: 60rpx; border-left: 10rpx solid #8B0000; padding-left: 20rpx; }
+.route-title { font-size: 38rpx; font-weight: bold; color: #333; display: block; }
+.route-intro { font-size: 24rpx; color: #999; margin-top: 10rpx; display: block; }
+
+.timeline { padding-left: 20rpx; }
+.node { display: flex; min-height: 160rpx; }
+
+/* 步骤条的核心：圆点与线条 */
+.dot-line { width: 40rpx; display: flex; flex-direction: column; align-items: center; margin-right: 30rpx; }
+.dot { width: 24rpx; height: 24rpx; background: #8B0000; border-radius: 50%; border: 6rpx solid #fff1f1; flex-shrink: 0; }
+.line { width: 4rpx; flex: 1; background: #eee; }
+
+.info-card { 
+  flex: 1; background: #fff; padding: 25rpx; border-radius: 12rpx; 
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05); margin-bottom: 30rpx;
+}
+.node-name { font-size: 32rpx; font-weight: bold; color: #333; display: block; }
+.node-tip { font-size: 26rpx; color: #666; margin-top: 10rpx; display: block; }

@@ -17,7 +17,7 @@
     "list": [
       { "pagePath": "pages/index/index", "text": "概览", "iconPath": "images/tab/home.png", "selectedIconPath": "images/tab/home_active.png" },
       { "pagePath": "pages/list/list", "text": "发现", "iconPath": "images/tab/list.png", "selectedIconPath": "images/tab/list_active.png" },
-      { "pagePath": "pages/route/route", "text": "路线", "iconPath": "images/tab/list.png", "selectedIconPath": "images/tab/list_active.png" },
+      { "pagePath": "pages/route/route", "text": "路线", "iconPath": "images/tab/route.png", "selectedIconPath": "images/tab/route_active.png" },
       { "pagePath": "pages/user/user", "text": "我的", "iconPath": "images/tab/user.png", "selectedIconPath": "images/tab/user_active.png" }
     ]
   },
