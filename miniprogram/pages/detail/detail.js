@@ -1,66 +1,11 @@
-// pages/detail/detail.js
+const db = wx.cloud.database();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  data: { poi: {} },
+  onLoad: function (options) {
+    // 接收 list 页面传来的 id 参数 [cite: 271]
+    db.collection('pois').doc(options.id).get().then(res => {
+      this.setData({ poi: res.data });
+      wx.setNavigationBarTitle({ title: res.data.name }); // 动态设置标题
+    });
   }
 })

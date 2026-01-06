@@ -1,2 +1,17 @@
-<!--pages/route/route.wxml-->
-<text>pages/route/route.wxml</text>
+<view class="route-page">
+  <view class="route-header">
+    <text class="route-title">{{routeName}}</text>
+  </view>
+  <view class="timeline">
+    <view class="time-item" wx:for="{{pathNodes}}" wx:key="index">
+      <view class="node-left">
+        <view class="dot"></view>
+        <view class="line" wx:if="{{index < pathNodes.length - 1}}"></view>
+      </view>
+      <view class="node-right">
+        <text class="node-name">{{item.name}}</text>
+        <text class="node-info">{{item.info}}</text>
+      </view>
+    </view>
+  </view>
+</view>

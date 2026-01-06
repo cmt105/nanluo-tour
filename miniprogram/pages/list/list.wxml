@@ -1,16 +1,43 @@
 <view class="container">
-  <view class="search-bar">
-    <input placeholder="搜索南锣景点..." class="search-input" />
+  <view class="search-section">
+    <icon type="search" size="18" class="search-icon"></icon>
+    <input 
+      class="search-input" 
+      placeholder="输入名称搜索景点（如：故居）..." 
+      value="{{searchKey}}"
+      bindinput="onSearch" 
+      confirm-type="search"
+    />
+    <icon wx:if="{{searchKey}}" type="clear" size="20" bindtap="clearSearch"></icon>
   </view>
-  
-  <scroll-view scroll-y="true" class="poi-list">
-    <view class="poi-item" wx:for="{{pois}}" wx:key="_id" bindtap="goToDetail" data-id="{{item._id}}">
-      <image class="poi-img" src="{{item.img}}" mode="aspectFill"></image>
-      <view class="poi-content">
-        <text class="poi-name">{{item.name}}</text>
-        <text class="poi-address">{{item.address}}</text>
-        <text class="poi-type">{{item.type}}</text>
+
+  <scroll-view scroll-y="true" class="poi-scroll-view">
+    <view class="poi-list">
+      <view 
+        class="poi-item" 
+        wx:for="{{pois}}" 
+        wx:key="_id" 
+        bindtap="goToDetail" 
+        data-id="{{item._id}}"
+      >
+        <image class="poi-img" src="{{item.img}}" mode="aspectFill"></image>
+        
+        <view class="poi-info">
+          <view class="poi-header">
+            <text class="poi-name">{{item.name}}</text>
+            <text class="poi-tag">{{item.type}}</text>
+          </view>
+          <text class="poi-address">📍 {{item.address}}</text>
+          <text class="poi-desc-short">{{item.desc}}</text>
+        </view>
+      </view>
+
+      <view class="empty-view" wx:if="{{pois.length === 0}}">
+        <icon type="warn" size="50" color="#ccc"></icon>
+        <text>未找到相关景点，换个关键词试试吧</text>
       </view>
     </view>
+    
+    <view class="bottom-safe-area"></view>
   </scroll-view>
 </view>

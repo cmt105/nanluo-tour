@@ -1,2 +1,14 @@
-<!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
+<view class="detail-container">
+  <image class="detail-img" src="{{poi.img}}" mode="aspectFill"></image>
+  <view class="detail-content">
+    <view class="head-row">
+      <text class="name">{{poi.name}}</text>
+      <text class="tag">{{poi.type}}</text>
+    </view>
+    <text class="address">📍 地址：{{poi.address}}</text>
+    <view class="divider"></view>
+    <text class="section-title">景点详情</text>
+    <text class="description">{{poi.desc}}</text>
+  </view>
+  <button class="fav-btn">收藏此景点</button>
+</view>
