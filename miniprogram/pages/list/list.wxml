@@ -1,6 +1,7 @@
 <view class="container">
+  <!-- 搜索区域：优化布局，图标与输入框垂直居中 -->
   <view class="search-section">
-    <icon type="search" size="18" class="search-icon"></icon>
+    <icon type="search" size="20" class="search-left-icon"></icon>
     <input 
       class="search-input" 
       placeholder="输入名称搜索景点（如：故居）..." 
@@ -8,9 +9,10 @@
       bindinput="onSearch" 
       confirm-type="search"
     />
-    <icon wx:if="{{searchKey}}" type="clear" size="20" bindtap="clearSearch"></icon>
+    <icon wx:if="{{searchKey}}" type="clear" size="22" class="search-clear-icon" bindtap="clearSearch"></icon>
   </view>
 
+  <!-- 滚动列表：优化滚动区域高度，增加内边距 -->
   <scroll-view scroll-y="true" class="poi-scroll-view">
     <view class="poi-list">
       <view 
@@ -20,7 +22,7 @@
         bindtap="goToDetail" 
         data-id="{{item.id}}" 
       >
-        <image class="poi-img" src="{{item.img}}" mode="aspectFill"></image>
+        <image class="poi-img" src="{{item.img}}" mode="aspectFill" binderror="onImgError" data-index="{{index}}"></image>
         
         <view class="poi-info">
           <view class="poi-header">
@@ -32,12 +34,14 @@
         </view>
       </view>
 
+      <!-- 空数据提示：优化样式，更美观柔和 -->
       <view class="empty-view" wx:if="{{pois.length === 0}}">
-        <icon type="warn" size="50" color="#ccc"></icon>
-        <text>未找到相关景点，换个关键词试试吧</text>
+        <icon type="warn" size="60" color="#ccc"></icon>
+        <text class="empty-text">未找到相关景点，换个关键词试试吧</text>
       </view>
     </view>
     
+    <!-- 底部安全区：适配异形屏 -->
     <view class="bottom-safe-area"></view>
   </scroll-view>
 </view>

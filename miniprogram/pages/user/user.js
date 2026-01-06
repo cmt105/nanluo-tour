@@ -1,66 +1,41 @@
-// pages/user/user.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    // 可添加用户相关数据
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
+  onLoad(options) {},
 
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow() {
-
+    // 每次显示用户页可刷新数据
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
+  // 跳转到收藏景点列表
+  goToFavPoi() {
+    wx.navigateTo({
+      url: '/pages/fav-poi/fav-poi'
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
+  // 跳转到收藏路线列表
+  goToFavRoute() {
+    wx.navigateTo({
+      url: '/pages/fav-route/fav-route'
+    });
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
+  // 跳转到系统设置（示例）
+  goToSetting() {
+    wx.openSetting({
+      success: (res) => {
+        console.log('打开设置成功', res);
+      }
+    });
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
-})
+  onReady() {},
+  onHide() {},
+  onUnload() {},
+  onPullDownRefresh() {},
+  onReachBottom() {},
+  onShareAppMessage() {}
+});

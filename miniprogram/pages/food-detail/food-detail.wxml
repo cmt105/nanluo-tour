@@ -1,0 +1,115 @@
+<!-- pages/food-detail/food-detail.wxml -->
+<view class="detail-container">
+  <!-- 1. 美食主图 -->
+  <image 
+    class="food-main-img" 
+    src="{{foodDetail.foodImg}}" 
+    mode="widthFix"
+    lazy-load="true"
+    fallback-src="/images/default-food.png"
+  />
+
+  <!-- 2. 美食基础信息（价格右移） -->
+  <view class="food-base-wrap">
+    <view class="food-name-price">
+      <text class="food-name">{{foodDetail.foodName || '未知美食'}}</text>
+      <!-- 价格单独右移容器 -->
+      <view class="price-right">
+        <text class="food-price">{{foodDetail.foodPrice || '¥0.00'}}</text>
+      </view>
+    </view>
+    <view class="food-score-sales">
+      <text class="score-star">★</text>
+      <text class="score-num">{{foodDetail.foodScore || '0.0'}}</text>
+      <text class="score-tag">老字号</text>
+      <text class="sales-num">{{foodDetail.sales || '月售 0'}}</text>
+    </view>
+    <view class="food-tags">
+      <text class="tag-item">{{foodDetail.foodType || '未分类'}}</text>
+      <text class="tag-item">{{foodDetail.foodTag || '无标签'}}</text>
+      <text class="tag-item">招牌菜</text>
+    </view>
+  </view>
+
+  <!-- 3. 烹饪信息（字体放大） -->
+  <view class="cook-info-wrap">
+    <view class="cook-item">
+      <text class="cook-icon">⌛</text>
+      <text class="cook-text">制作时间: {{foodDetail.cookTime || '约20分钟'}}</text>
+    </view>
+    <view class="cook-item">
+      <text class="cook-icon">👥</text>
+      <text class="cook-text">建议{{foodDetail.suggestedPeople || '1人'}}食用</text>
+    </view>
+    <view class="cook-item">
+      <text class="cook-icon">🌶️</text>
+      <text class="cook-text">{{foodDetail.flavor || '原味'}}</text>
+    </view>
+  </view>
+
+  <!-- 4. 商家信息卡片 -->
+  <view class="merchant-card">
+    <text class="card-title">商家信息</text>
+    <view class="merchant-item">
+      <text class="item-icon">📍</text>
+      <text class="item-content">{{foodDetail.foodAddr || '暂无详细地址'}}</text>
+      <text class="arrow">></text>
+    </view>
+    <view class="merchant-item">
+      <text class="item-icon">📞</text>
+      <text class="item-content">{{foodDetail.foodTel || '暂无联系电话'}}</text>
+      <text class="arrow">></text>
+    </view>
+    <view class="merchant-item">
+      <text class="item-icon">⏰</text>
+      <text class="item-content">{{foodDetail.businessTime || '09:00-22:00'}}</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <!-- 5. 美食详情描述 -->
+  <view class="desc-section">
+    <text class="section-title">美食详情</text>
+    <text class="desc-content">{{foodDetail.foodDesc || '暂无该美食的详细介绍，敬请期待~'}}</text>
+  </view>
+
+  <!-- 6. 用户评价模块 -->
+  <view class="comment-section">
+    <text class="section-title">用户评价（{{commentList.length}}）</text>
+    <view class="empty-comment" wx:if="{{commentList.length === 0}}">
+      暂无用户评价，快来成为第一个分享体验的人吧~
+    </view>
+    <view class="comment-item" wx:for="{{commentList}}" wx:key="_id">
+      <image 
+        class="user-avatar" 
+        src="{{item.userAvatar}}" 
+        mode="widthFix"
+        fallback-src="/images/default-avatar.png"
+      />
+      <view class="comment-content">
+        <view class="comment-top">
+          <text class="user-name">{{item.userName || '匿名用户'}}</text>
+          <text class="comment-star">★{{item.score || '5.0'}}</text>
+          <text class="comment-time">{{item.commentTime || '未知时间'}}</text>
+        </view>
+        <text class="comment-text">{{item.commentText || '用户未填写评价内容'}}</text>
+        <image 
+          class="comment-img" 
+          src="{{item.commentImg}}" 
+          mode="widthFix"
+          wx:if="{{item.commentImg}}"
+          fallback-src="/images/default-comment.png"
+        />
+      </view>
+    </view>
+  </view>
+
+  <!-- 7. 底部按钮（分享在左，预订在右） -->
+  <view class="bottom-btn-group">
+    <button class="share-btn" bindtap="onShareTap">
+      <text class="share-icon">📤</text>
+      <text class="share-text">分享</text>
+    </button>
+    <button class="book-btn" bindtap="onBookTap">立即预订</button>
+  </view>
+</view>

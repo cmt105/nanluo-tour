@@ -8,6 +8,7 @@ App({
       wx.cloud.init({
         // env 参数决定连接哪个环境，不填则默认连接第一个
         // 如果你有多个环境，建议填入环境ID
+        env: 'cloud1-8gv46cfnc1a626b4',
         traceUser: true,
       })
     }

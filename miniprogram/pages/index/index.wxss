@@ -1,20 +1,141 @@
-.container { background-color: #fcfcfc; min-height: 100vh; }
-.banner { width: 100%; height: 450rpx; }
+page {
+  background-color: #f9f7f5;
+}
 
-.content-box { padding: 40rpx; display: flex; flex-direction: column; align-items: center; }
-.title { font-size: 42rpx; font-weight: bold; color: #333; margin-bottom: 10rpx; }
-.tag { font-size: 24rpx; color: #a00; border: 1rpx solid #a00; padding: 4rpx 12rpx; border-radius: 4rpx; margin-bottom: 30rpx; }
-
-.intro-section { background: #fff; padding: 30rpx; border-radius: 12rpx; box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.05); margin-bottom: 50rpx; }
-.intro-text { font-size: 28rpx; color: #666; line-height: 1.6; text-align: justify; }
-
-/* 核心按钮样式 */
-.primary-btn {
-  width: 80% !important;
-  background-color: #a00; /* 北京红 */
+/* 顶部轮播图 */
+.home-swiper {
+  height: 450rpx;
+  width: 100%;
+}
+.swiper-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.swiper-img {
+  width: 100%;
+  height: 100%;
+}
+.swiper-mask {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 40rpx 30rpx;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
   color: white;
+}
+.swiper-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  text-shadow: 0 2rpx 4rpx rgba(0,0,0,0.5);
+}
+
+/* 介绍区 */
+.intro-section {
+  padding: 40rpx 30rpx;
+}
+.intro-title {
+  font-size: 34rpx;
+  color: #8B0000;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 20rpx;
+}
+.intro-card {
+  background-color: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+  margin-bottom: 30rpx;
+}
+.intro-desc {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.8;
+}
+
+/* 标签组 */
+.tag-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+.tag {
+  font-size: 24rpx;
+  color: #8B0000;
+  border: 1rpx solid #8B0000;
+  border-radius: 20rpx;
+  padding: 8rpx 20rpx;
+}
+
+/* 今日推荐（大尺寸核心样式） */
+.recommend-section {
+  padding: 0 30rpx 50rpx;
+}
+.recommend-title {
+  font-size: 36rpx;
+  color: #333;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 20rpx;
+}
+.recommend-card {
+  background-color: white;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 6rpx 18rpx rgba(0,0,0,0.08);
+  width: 100%;
+}
+/* 大尺寸图片 */
+.recommend-img {
+  width: 100%;
+  height: 300rpx;
+}
+/* 信息区域 */
+.recommend-info {
+  padding: 30rpx 25rpx;
+}
+.recommend-name {
+  font-size: 34rpx;
+  color: #333;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10rpx;
+}
+.recommend-tag {
+  font-size: 26rpx;
+  color: #999;
+  display: block;
+  margin-bottom: 15rpx;
+}
+.recommend-desc {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.6;
+  display: block;
+}
+
+/* 温暖按钮 */
+.btn-section {
+  padding: 0 30rpx 40rpx;
+}
+.explore-btn {
+  width: 100%;
+  background-color: #8B0000;
+  color: white;
+  font-size: 32rpx;
+  padding: 24rpx 0;
   border-radius: 50rpx;
-  font-weight: 500;
-  box-shadow: 0 8rpx 15rpx rgba(160, 0, 0, 0.2);
-  transition: all 0.3s;
+  box-shadow: 0 6rpx 16rpx rgba(139,0,0,0.2);
+}
+
+/* 底部提示 */
+.tips {
+  padding: 20rpx;
+  text-align: center;
+}
+.tips-text {
+  font-size: 22rpx;
+  color: #999;
 }

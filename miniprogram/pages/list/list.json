@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "南锣鼓巷景点发现",
+  "backgroundColor": "#f5f7fa",
+  "backgroundTextStyle": "dark"
 }

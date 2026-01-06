@@ -1,0 +1,264 @@
+/* pages/food-detail/food-detail.wxss */
+page {
+  background-color: #f5f5f5;
+  padding-bottom: 100rpx;
+}
+
+/* 1. 美食主图（通栏展示，适配容错） */
+.food-main-img {
+  width: 100%;
+  height: 300rpx;
+  object-fit: cover;
+}
+
+/* 2. 美食基础信息（价格右移，间距舒适） */
+.food-base-wrap {
+  background-color: #fff;
+  padding: 20rpx 24rpx;
+  margin-top: 12rpx;
+}
+.food-name-price {
+  display: flex;
+  justify-content: space-between; /* 价格右移核心：两端对齐 */
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+.food-name {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #333;
+}
+.price-right {
+  text-align: right; /* 价格靠右对齐 */
+}
+.food-price {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #E63946;
+}
+.food-score-sales {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 16rpx;
+}
+.score-star {
+  font-size: 26rpx;
+  color: #FFC107;
+}
+.score-num {
+  font-size: 26rpx;
+  color: #333;
+  font-weight: 500;
+}
+.score-tag {
+  font-size: 22rpx;
+  color: #fff;
+  background-color: #FFC107;
+  padding: 2rpx 8rpx;
+  border-radius: 4rpx;
+}
+.sales-num {
+  font-size: 22rpx;
+  color: #999;
+  margin-left: 10rpx;
+}
+.food-tags {
+  display: flex;
+  gap: 12rpx;
+}
+.tag-item {
+  font-size: 22rpx;
+  color: #666;
+  background-color: #f5f5f5;
+  padding: 6rpx 14rpx;
+  border-radius: 20rpx;
+}
+
+/* 3. 烹饪信息（字体放大，清晰醒目） */
+.cook-info-wrap {
+  background-color: #fff;
+  padding: 20rpx 24rpx;
+  margin-top: 12rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.cook-item {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+.cook-icon {
+  font-size: 30rpx; /* 图标放大，和文字匹配 */
+  color: #666;
+}
+.cook-text {
+  font-size: 26rpx; /* 文字放大，原22rpx，提升可读性 */
+  color: #666;
+}
+
+/* 4. 商家信息卡片（带箭头，整洁有序） */
+.merchant-card {
+  background-color: #fff;
+  margin-top: 12rpx;
+  padding: 20rpx 24rpx;
+}
+.card-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16rpx;
+  display: block;
+}
+.merchant-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+.merchant-item:last-child {
+  border-bottom: none;
+}
+.item-icon {
+  font-size: 26rpx;
+  color: #666;
+  margin-right: 12rpx;
+}
+.item-content {
+  font-size: 24rpx;
+  color: #333;
+  flex: 1;
+}
+.arrow {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 5. 美食详情描述（排版美观，行高舒适） */
+.desc-section {
+  background-color: #fff;
+  margin-top: 12rpx;
+  padding: 20rpx 24rpx;
+}
+.section-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16rpx;
+  display: block;
+}
+.desc-content {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 40rpx;
+  text-align: justify;
+}
+
+/* 6. 用户评价模块（布局合理，信息完整） */
+.comment-section {
+  background-color: #fff;
+  margin-top: 12rpx;
+  padding: 20rpx 24rpx;
+}
+.empty-comment {
+  font-size: 26rpx;
+  color: #999;
+  text-align: center;
+  padding: 50rpx 0;
+}
+.comment-item {
+  display: flex;
+  gap: 16rpx;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+.comment-item:last-child {
+  border-bottom: none;
+}
+.user-avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.comment-content {
+  flex: 1;
+}
+.comment-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+.user-name {
+  font-size: 24rpx;
+  font-weight: 500;
+  color: #333;
+}
+.comment-star {
+  font-size: 22rpx;
+  color: #FFC107;
+  margin-left: 8rpx;
+}
+.comment-time {
+  font-size: 20rpx;
+  color: #999;
+}
+.comment-text {
+  font-size: 22rpx;
+  color: #666;
+  line-height: 36rpx;
+  margin-bottom: 12rpx;
+}
+.comment-img {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 8rpx;
+  object-fit: cover;
+}
+
+/* 7. 底部功能按钮（分享按钮修复：图标下移、文字上移，清晰可见） */
+.bottom-btn-group {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  background-color: #fff;
+  box-shadow: 0 -2rpx 10rpx rgba(0,0,0,0.05);
+  box-sizing: border-box;
+}
+.share-btn {
+  width: 25%; /* 分享按钮占1/4宽度 */
+  height: 80rpx;
+  background-color: #fff;
+  color: #666;
+  font-size: 22rpx;
+  /* 纵向布局，调整图标和文字的位置 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding-top: 4rpx; /* 整体微调，避免溢出 */
+}
+.share-icon {
+  font-size: 28rpx;
+  margin-bottom: 2rpx; /* 图标下移：减少底部间距，略微下沉 */
+  transform: translateY(2rpx); /* 精准下移2rpx，视觉更舒适 */
+}
+.share-text {
+  font-size: 20rpx;
+  transform: translateY(-2rpx); /* 文字上移：精准上移2rpx，贴近图标且清晰 */
+}
+.book-btn {
+  width: 75%; /* 预订按钮占3/4宽度 */
+  height: 80rpx;
+  background-color: #E63946;
+  color: #fff;
+  font-size: 28rpx;
+  font-weight: 500;
+  border: none;
+  box-sizing: border-box;
+}

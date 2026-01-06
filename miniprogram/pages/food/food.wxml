@@ -1,0 +1,98 @@
+<view class="page-container">
+  <!-- 顶部搜索框 -->
+  <view class="search-bar">
+    <view class="search-icon-wrap">
+      <text class="search-icon">🔍</text>
+    </view>
+    <input 
+      placeholder="搜索想吃的美食～" 
+      class="search-input"
+      bindinput="onSearchInput"
+      value="{{searchKey}}"
+      placeholder-class="search-placeholder"
+    />
+    <view class="clear-icon" wx:if="{{searchKey}}" bindtap="clearSearch">
+      <text>✕</text>
+    </view>
+  </view>
+
+  <!-- 分类标签栏 -->
+  <view class="tab-bar">
+    <view 
+      class="tab-item {{currentTab === item ? 'active' : ''}}" 
+      wx:for="{{tabList}}" 
+      wx:key="*this"
+      data-tab="{{item}}"
+      bindtap="onTabClick"
+    >
+      <text>{{item}}</text>
+      <view class="tab-underline {{currentTab === item ? 'active' : ''}}"></view>
+    </view>
+  </view>
+
+  <!-- 美食卡片列表 -->
+  <view class="food-card-list">
+    <!-- 空数据提示 -->
+    <view class="empty-tip" wx:if="{{foodList.length === 0}}">
+      <text class="empty-icon">🥺</text>
+      <text class="empty-text">暂无相关美食数据~</text>
+      <text class="empty-subtext">换个关键词或分类试试看吧</text>
+    </view>
+
+    <!-- 循环渲染美食卡片 -->
+    <view 
+      class="food-card" 
+      wx:for="{{foodList}}" 
+      wx:key="_id"
+      bindtap="goToDetail"  
+      data-id="{{item._id}}"
+    >
+      <!-- 美食图片 -->
+      <view class="food-img-wrap">
+        <image 
+          class="food-img" 
+          src="{{item.foodImg || '/images/default-food.png'}}" 
+          mode="widthFix"
+          lazy-load="true"
+          fallback-src="/images/default-food.png"
+        />
+        <view class="food-tag-corner" wx:if="{{item.foodTag}}">{{item.foodTag}}</view>
+      </view>
+
+      <!-- 美食信息区域 -->
+      <view class="food-info">
+        <!-- 名称+评分 -->
+        <view class="info-top">
+          <text class="food-name">{{item.foodName}}</text>
+          <view class="score-wrap" wx:if="{{item.foodScore}}">
+            <text class="food-score">★ {{item.foodScore}}</text>
+            <text class="score-tag">超赞</text>
+          </view>
+        </view>
+
+        <!-- 描述 -->
+        <text class="food-desc" wx:if="{{item.foodDesc}}">{{item.foodDesc}}</text>
+
+        <!-- 地址+距离 -->
+        <view class="info-middle" wx:if="{{item.foodAddr || item.foodDistance}}">
+          <text class="addr-icon">📍</text>
+          <text class="food-addr" wx:if="{{item.foodAddr}}">{{item.foodAddr}}</text>
+          <text class="food-distance" wx:if="{{item.foodDistance}}">| {{item.foodDistance}}</text>
+        </view>
+
+        <!-- 价格纯右对齐 -->
+        <view class="info-bottom">
+          <text class="food-price" wx:if="{{item.foodPrice}}">{{item.foodPrice}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 重新设计的底部标语 -->
+  <view class="footer-tips">
+    <view class="tips-content">
+      <text class="tips-emoji">🍜</text>
+      <text class="tips-text">一口下去全是胡同里的温柔</text>
+    </view>
+  </view>
+</view>

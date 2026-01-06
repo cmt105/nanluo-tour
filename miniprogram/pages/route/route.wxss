@@ -1,8 +1,34 @@
 /* pages/route/route.wxss */
 .route-container { padding: 40rpx; background-color: #fcfcfc; min-height: 100vh; }
-.route-header { margin-bottom: 60rpx; border-left: 10rpx solid #8B0000; padding-left: 20rpx; }
+/* 修改route-header为弹性布局，容纳收藏按钮 */
+.route-header { 
+  margin-bottom: 60rpx; 
+  border-left: 10rpx solid #8B0000; 
+  padding-left: 20rpx; 
+  display: flex;
+  flex-direction: column;
+  position: relative; /* 为收藏按钮定位 */
+}
 .route-title { font-size: 38rpx; font-weight: bold; color: #333; display: block; }
 .route-intro { font-size: 24rpx; color: #999; margin-top: 10rpx; display: block; }
+
+/* 新增收藏按钮样式 */
+.fav-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  padding: 8rpx 16rpx;
+  border: 1rpx solid #eee;
+  border-radius: 20rpx;
+  background-color: #fff;
+}
+.fav-text {
+  font-size: 24rpx;
+  color: #666;
+}
 
 .timeline { padding-left: 20rpx; }
 .node { display: flex; min-height: 160rpx; }

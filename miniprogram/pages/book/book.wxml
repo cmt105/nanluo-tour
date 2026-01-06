@@ -1,0 +1,74 @@
+<view class="book-container">
+  <!-- 日期选择模块（不变） -->
+  <view class="date-module">
+    <text class="module-title">日期选择</text>
+    <view class="date-picker">
+      <view class="week-row">
+        <view class="week-item">日</view>
+        <view class="week-item">一</view>
+        <view class="week-item">二</view>
+        <view class="week-item">三</view>
+        <view class="week-item">四</view>
+        <view class="week-item">五</view>
+        <view class="week-item">六</view>
+      </view>
+      <view class="date-row">
+        <view 
+          class="date-item {{item.isToday ? 'today' : ''}} {{item.isActive ? 'active' : ''}}"
+          wx:for="{{dateList}}"
+          wx:key="uniqueKey"
+          bindtap="selectDate"
+          data-index="{{index}}"
+        >
+          {{item.day}}
+          <text class="today-tag" wx:if="{{item.isToday}}">今天</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 时间段选择模块（动态渲染，匹配商家完整营业时间） -->
+  <view class="time-module">
+    <text class="module-title">时间段选择</text>
+    <view class="time-list" wx:if="{{timeList.length > 0}}">
+      <view 
+        class="time-item {{selectedTime === item.time ? 'active' : ''}}"
+        bindtap="selectTime"
+        data-time="{{item.time}}"
+        wx:for="{{timeList}}"
+        wx:key="index"
+      >{{item.time}}</view>
+    </view>
+    <view class="no-time-tip" wx:else>今日暂无可用预订时间段</view>
+  </view>
+
+  <!-- 联系人信息模块（不变） -->
+  <view class="contact-module">
+    <text class="module-title">联系人信息</text>
+    <view class="input-item">
+      <text class="label">姓 名</text>
+      <input 
+        class="input" 
+        placeholder="请输入姓名" 
+        bindinput="inputChange"
+        data-key="name"
+        value="{{formData.name}}"
+      />
+    </view>
+    <view class="input-item">
+      <text class="label">手机号</text>
+      <input 
+        class="input" 
+        placeholder="请输入手机号" 
+        type="number"
+        bindinput="inputChange"
+        data-key="phone"
+        value="{{formData.phone}}"
+      />
+      <text class="get-btn" bindtap="getUserInfo">获取填写</text>
+    </view>
+  </view>
+
+  <!-- 立即预订按钮（不变） -->
+  <button class="book-btn" bindtap="submitBook" disabled="{{!selectedTime}}">立即预订</button>
+</view>

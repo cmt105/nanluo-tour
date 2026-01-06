@@ -1,8 +1,14 @@
 <view class="route-container">
   <view class="route-section" wx:for="{{routes}}" wx:key="_id" wx:for-item="route">
+    <!-- 修改route-header，添加收藏按钮 -->
     <view class="route-header">
       <text class="route-title">{{route.routeName}}</text>
       <text class="route-intro">{{route.intro}}</text>
+      <!-- 新增收藏按钮 -->
+      <view class="fav-btn" bindtap="toggleRouteFav" data-routeid="{{route._id}}" data-index="{{index}}">
+        <icon type="{{route.isFav ? 'success' : 'star'}}" size="20" color="{{route.isFav ? '#8B0000' : '#999'}}"></icon>
+        <text class="fav-text">{{route.isFav ? '已收藏' : '收藏'}}</text>
+      </view>
     </view>
 
     <view class="timeline">

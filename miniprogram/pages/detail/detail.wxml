@@ -1,35 +1,116 @@
 <view class="detail-container">
-  <image 
-    class="top-img" 
-    src="{{poi.img}}" 
-    mode="aspectFill" 
-    bindtap="previewImage"
-  ></image>
+  <!-- 顶部图片（优化阴影+圆角） -->
+  <view class="banner-wrap">
+    <image 
+      class="banner-img" 
+      src="{{poi.img || 'https://wx3.sinaimg.cn/mw690/006y8mN6ly1g6e2tdgve1j30u00k0n0j.jpg'}}" 
+      mode="widthFix" 
+      bindtap="previewImage"
+    ></image>
+    <!-- 轮播指示器（优化样式） -->
+    <view class="banner-dots">
+      <view class="dot active"></view>
+      <view class="dot"></view>
+      <view class="dot"></view>
+    </view>
+    <!-- 顶部温馨提示 -->
+    <view class="banner-tips">
+      <text>愿你在胡同里，遇见老北京的温柔</text>
+    </view>
+  </view>
 
+  <!-- 主体信息（增加卡片阴影+圆角） -->
   <view class="main-card">
-    <view class="poi-head">
-      <text class="p-name">{{poi.name}}</text>
-      <text class="p-tag">{{poi.type}}</text>
-    </view>
-    
-    <text class="p-address">📍 地址：{{poi.address}}</text>
-    <view class="divider"></view>
-
-    <view class="section">
-      <view class="s-title">景点介绍</view>
-      <text class="s-content">{{poi.desc}}</text>
+    <!-- 景点名称+评分（优化排版） -->
+    <view class="poi-header">
+      <text class="poi-name">{{poi.name}}</text>
+      <view class="score-wrap">
+        <text class="poi-score">★ {{poi.score}}</text>
+        <text class="score-desc">值得一去</text>
+      </view>
     </view>
 
-    <view class="section info-section">
-      <view class="s-title">游览提醒</view>
-      <view class="info-item">🕗 建议用时：1-2 小时</view>
-      <view class="info-item">🎫 门票：免费 (部分展馆需预约)</view>
-      <view class="info-item">🚌 交通：地铁8号线/6号线南锣鼓巷站</view>
+    <!-- 开放时间（增加图标美化） -->
+    <view class="info-row">
+      <view class="info-icon-wrap time-icon">
+        <text class="info-icon">⌚</text>
+      </view>
+      <text class="info-text">{{poi.openTime}}</text>
+      <text class="info-tips">游玩宜早不宜晚哦～</text>
     </view>
 
+    <!-- 地址+地图箭头（优化交互） -->
+    <view class="info-row">
+      <view class="info-icon-wrap addr-icon">
+        <text class="info-icon">📍</text>
+      </view>
+      <text class="info-text">{{poi.address}}</text>
+      <view class="map-btn-small" bindtap="openMap">
+        <text class="map-arrow">查看地图</text>
+      </view>
+    </view>
+
+    <!-- 标签栏（优化选中样式） -->
+    <view class="tab-bar">
+      <view 
+        class="tab-item {{currentTab === '简介' ? 'active' : ''}}"
+        data-tab="简介"
+        bindtap="switchTab"
+      >
+        <text>简介</text>
+        <view class="tab-underline {{currentTab === '简介' ? 'active' : ''}}"></view>
+      </view>
+      <view 
+        class="tab-item {{currentTab === '游玩贴士' ? 'active' : ''}}"
+        data-tab="游玩贴士"
+        bindtap="switchTab"
+      >
+        <text>游玩贴士</text>
+        <view class="tab-underline {{currentTab === '游玩贴士' ? 'active' : ''}}"></view>
+      </view>
+    </view>
+
+    <!-- 内容区域（增加温馨文案） -->
+    <view class="content-area">
+      <view wx:if="{{currentTab === '简介'}}">
+        <text class="content-title">关于{{poi.name}}的小故事</text>
+        <text class="content-text">{{poi.desc || '暂无简介信息，不妨亲自来探索～'}}</text>
+      </view>
+      <view wx:if="{{currentTab === '游玩贴士'}}">
+        <text class="content-title">贴心游玩建议</text>
+        <view class="tips-list">
+          <view class="tips-item">
+            <text class="tips-icon">✨</text>
+            <text class="tips-text">建议游玩：1-2小时，慢慢逛才有意思</text>
+          </view>
+          <view class="tips-item">
+            <text class="tips-icon">🎫</text>
+            <text class="tips-text">门票：免费，快乐无需付费～</text>
+          </view>
+          <view class="tips-item">
+            <text class="tips-icon">🚌</text>
+            <text class="tips-text">交通：景区直通车直达，少走路多玩耍</text>
+          </view>
+          <view class="tips-item">
+            <text class="tips-icon">💡</text>
+            <text class="tips-text">小提醒：避开节假日高峰，体验感更佳</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏（优化配色+交互） -->
+  <view class="action-bar">
     <button 
-      class="fav-btn {{isFav ? 'is-fav' : ''}}" 
+      class="fav-btn {{isFav ? 'active' : ''}}" 
       bindtap="onFavorite"
-    >{{isFav ? '❤️ 已收藏' : '⭐ 收藏此地'}}</button>
+    >{{isFav ? '❤️ 已收藏' : '♡ 收藏此景'}}</button>
+    <button class="share-btn" bindtap="onShare">
+      <text>📤 分享</text>
+    </button>
+    <button class="map-btn" bindtap="openMap">
+      <text>🗺️ 导航</text>
+    </button>
   </view>
 </view>

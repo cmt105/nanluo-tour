@@ -1,0 +1,68 @@
+.fav-container {
+  background: #f8f8f8;
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+/* 空状态样式 */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+}
+.empty-icon {
+  font-size: 120rpx;
+  color: #ccc;
+  margin-bottom: 30rpx;
+}
+.empty-text {
+  font-size: 30rpx;
+  color: #999;
+  margin-bottom: 40rpx;
+}
+.back-btn {
+  background: #A00000;
+  color: white;
+  border-radius: 50rpx;
+  padding: 20rpx 60rpx;
+  font-size: 28rpx;
+}
+
+/* 收藏列表样式 */
+.fav-list {
+  gap: 20rpx;
+}
+.fav-item {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+.item-img {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
+}
+.item-info {
+  flex: 1;
+  margin-left: 20rpx;
+}
+.item-name {
+  font-size: 30rpx;
+  color: #333;
+  font-weight: 500;
+}
+.item-op {
+  margin-left: 20rpx;
+}
+.cancel-btn {
+  font-size: 26rpx;
+  color: #ff4444;
+  padding: 8rpx 16rpx;
+  border: 1rpx solid #ff4444;
+  border-radius: 4rpx;
+}

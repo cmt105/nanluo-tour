@@ -10,21 +10,24 @@
   </view>
 
   <view class="menu-list">
-    <view class="menu-item">
+    <!-- 绑定跳转到收藏景点事件 -->
+    <view class="menu-item" bindtap="goToFavPoi">
       <view class="menu-left">
         <text class="icon">📍</text>
         <text>我的收藏景点</text>
       </view>
       <text class="arrow">></text>
     </view>
-    <view class="menu-item">
+    <!-- 绑定跳转到收藏路线事件 -->
+    <view class="menu-item" bindtap="goToFavRoute">
       <view class="menu-left">
         <text class="icon">🗺️</text>
         <text>我的收藏路线</text>
       </view>
-      <text class="arrow">></text>
+      <text class="arrow"></text>
     </view>
-    <view class="menu-item">
+    <!-- 绑定跳转到系统设置事件 -->
+    <view class="menu-item" bindtap="goToSetting">
       <view class="menu-left">
         <text class="icon">⚙️</text>
         <text>系统设置</text>

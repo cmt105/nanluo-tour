@@ -1,14 +1,61 @@
-<view class="container">
-  <image class="banner" src="cloud://cloud1-8gv46cfnc1a626b4.636c-cloud1-8gv46cfnc1a626b4-1394447167/poi_001.jpg" mode="aspectFill"></image>
-  
-  <view class="content-box">
-    <text class="title">南锣鼓巷智慧导览</text>
-    <text class="tag">国家4A级景区 · 元代古街</text>
-    
-    <view class="intro-section">
-      <text class="intro-text">南锣鼓巷始建于元代，是我国唯一完整保存着元代府邸、院落构造最大的棋盘式传统民居区，承载着深厚的北京历史与文化 [cite: 289]。</text>
+<view class="home-container">
+  <!-- 顶部轮播图 -->
+  <swiper class="home-swiper" indicator-dots circular autoplay interval="3500">
+    <swiper-item wx:for="{{swiperList}}" wx:key="index">
+      <view class="swiper-item">
+        <image class="swiper-img" src="{{item.img}}" mode="cover"></image>
+        <view class="swiper-mask">
+          <text class="swiper-text">{{item.text}}</text>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!-- 核心介绍区 -->
+  <view class="intro-section">
+    <text class="intro-title">胡同深处，藏着老北京的魂</text>
+    <view class="intro-card">
+      <text class="intro-desc">
+        南锣鼓巷是北京最古老的街区之一，东起交道口南大街，西至地安门东大街，
+        全长787米，宽8米，是唯一完整保存着元代胡同院落肌理的棋盘式传统民居区。
+        这里汇集了齐白石旧居、茅盾故居等名人宅院，也藏着雨儿胡同、菊儿胡同的烟火气。
+      </text>
     </view>
 
-    <button class="primary-btn" bindtap="goToList">进入景点发现</button>
+    <!-- 特色标签 -->
+    <view class="tag-group">
+      <text class="tag">元代肌理</text>
+      <text class="tag">名人故居</text>
+      <text class="tag">胡同风情</text>
+      <text class="tag">文化遗存</text>
+    </view>
+  </view>
+
+  <!-- 今日推荐（大尺寸样式） -->
+  <view class="recommend-section">
+    <text class="recommend-title">今日推荐</text>
+    <!-- 移除卡片的点击事件 -->
+    <view class="recommend-card">
+      <!-- 大尺寸图片 -->
+      <image class="recommend-img" src="{{recommendPoi.image}}" mode="aspectFill"></image>
+      <!-- 信息区域：删除查看详情按钮 -->
+      <view class="recommend-info">
+        <text class="recommend-name">{{recommendPoi.name}}</text>
+        <text class="recommend-tag">{{recommendPoi.tag}}</text>
+        <text class="recommend-desc">{{recommendPoi.desc}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 温暖按钮 -->
+  <view class="btn-section">
+    <button class="explore-btn" bindtap="startExplore">
+      和我一起，走进这条胡同吧
+    </button>
+  </view>
+
+  <!-- 底部小提示 -->
+  <view class="tips">
+    <text class="tips-text">数据加载中… 正在为你准备胡同故事</text>
   </view>
 </view>
