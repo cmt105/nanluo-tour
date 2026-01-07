@@ -1,79 +1,126 @@
 const db = wx.cloud.database();
 
 Page({
+  /**
+   * 页面的初始数据
+   */
   data: {
-    pois: [],       // 景点列表（对应美食页面foodList）
-    searchKey: ''   // 搜索关键词（和美食页面一致）
+    pois: [],       // 用于存放转换后的景点列表
+    searchKey: ''   // 搜索关键词
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    // 页面加载获取全部景点，和美食页面onLoad逻辑一致
+    // 页面加载时自动获取数据
     this.getPoiList();
   },
 
   /**
-   * 获取景点列表（仿照美食页面getFoodListByType，简化无分类，保留搜索）
+   * 获取景点数据（核心：包含搜索过滤和图片转换）
    */
-  getPoiList() {
+  getPoiList: function () {
+    wx.showLoading({ title: '加载中...' });
     let query = db.collection('pois');
 
-    // 叠加搜索条件（和美食页面模糊搜索逻辑一致）
-    const { searchKey } = this.data;
-    if (searchKey.trim()) {
+    // 1. 实现模糊搜索逻辑：根据 searchKey 过滤
+    if (this.data.searchKey.trim()) {
       query = query.where({
         name: db.RegExp({
-          regexp: searchKey.trim(),
+          regexp: this.data.searchKey.trim(),
           options: 'i' // 忽略大小写
         })
       });
     }
 
-    // 发起请求，直接赋值数据（和美食页面一致，不修改图片路径）
-    query.get()
-      .then(res => {
-        this.setData({
-          pois: res.data || [] // 直接将数据库返回的景点数据赋值给页面
-        });
-      })
-      .catch(err => {
-        console.error("获取景点数据失败：", err);
-        wx.showToast({
-          title: '数据加载失败',
-          icon: 'none'
-        });
-      });
+    // 2. 发起数据库查询
+    query.get().then(res => {
+      // 3. 关键补丁：必须转换链接，否则报 500/403 错误
+      this.convertCloudImages(res.data);
+    }).catch(err => {
+      console.error("数据库查询失败", err);
+      wx.hideLoading();
+    });
   },
 
   /**
-   * 搜索框输入事件（和美食页面onSearchInput逻辑完全一致）
+   * 救命补丁：将 cloud:// 转换为临时的 HTTPS 链接
+   * 解决：渲染层 500 路径错误 和 跨用户访问 403 错误
    */
-  onSearchInput(e) {
-    const searchKey = e.detail.value || "";
-    this.setData({ searchKey }, () => {
-      // 输入实时刷新列表
+  convertCloudImages: function (originalData) {
+    if (!originalData || originalData.length === 0) {
+      this.setData({ pois: [] });
+      wx.hideLoading();
+      return;
+    }
+
+    // 提取所有图片的 Cloud ID 组成数组
+    const fileList = originalData.map(item => item.img);
+
+    wx.cloud.getTempFileURL({
+      fileList: fileList,
+      success: res => {
+        // 将转换后的 https 链接重新注入数据中
+        const updatedList = originalData.map((item, index) => {
+          return {
+            ...item,
+            // 使用返回的 tempFileURL 替换原本的 cloud:// 链接
+            img: res.fileList[index].tempFileURL 
+          };
+        });
+
+        this.setData({
+          pois: updatedList
+        });
+        wx.hideLoading();
+      },
+      fail: err => {
+        console.error("图片转换失败", err);
+        this.setData({ pois: originalData }); // 兜底显示
+        wx.hideLoading();
+      }
+    });
+  },
+
+  /**
+   * 修复报错：处理搜索框输入事件
+   * 对应 WXML 中的 bindinput="onSearch"
+   */
+  onSearch: function (e) {
+    const key = e.detail.value || "";
+    this.setData({
+      searchKey: key
+    }, () => {
+      // 输入后实时触发搜索
       this.getPoiList();
     });
   },
 
   /**
-   * 跳转详情页（仿照美食页面goToDetail）
+   * 修复报错：跳转至详情页
+   * 对应 WXML 中的 bindtap="goToDetail"
    */
-  goToDetail(e) {
-    const poiId = e.currentTarget.dataset.id;
-    if (!poiId) {
-      wx.showToast({ title: '无法获取景点信息', icon: 'none' });
-      return;
+  goToDetail: function (e) {
+    const id = e.currentTarget.dataset.id;
+    if (id) {
+      wx.navigateTo({
+        url: `/pages/detail/detail?id=${id}`,
+        fail: err => {
+          console.error("跳转失败，请检查 app.json 是否注册了 detail 页面", err);
+        }
+      });
+    } else {
+      console.error("未获取到 dataset-id，请检查 WXML 是否写了 data-id=\"{{item._id}}\"");
     }
+  },
 
-    wx.navigateTo({
-      url: `/pages/detail/detail?id=${poiId}`,
-      fail: (err) => {
-        console.error("页面跳转失败：", err);
-        wx.showToast({ title: '跳转失败，请检查页面路径', icon: 'none' });
-      }
+  /**
+   * 清除搜索
+   */
+  clearSearch: function () {
+    this.setData({ searchKey: '' }, () => {
+      this.getPoiList();
     });
   }
 });

@@ -1,12 +1,11 @@
 <view class="fav-route-container">
-  <!-- 空状态 -->
   <view class="empty" wx:if="{{favRouteList.length === 0}}">
     <text class="empty-icon">🗺️</text>
     <text class="empty-text">暂无收藏的路线</text>
+    
     <button class="back-btn" bindtap="goBack">返回首页</button>
   </view>
 
-  <!-- 收藏路线列表 -->
   <view class="route-list" wx:else>
     <view class="route-item" wx:for="{{favRouteList}}" wx:key="_id">
       <view class="route-header" bindtap="goToRouteDetail" data-name="{{item.routeName}}">

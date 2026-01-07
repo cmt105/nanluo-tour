@@ -1,19 +1,18 @@
 <view class="fav-container">
-  <!-- 空状态 -->
   <view class="empty" wx:if="{{favPoiList.length === 0}}">
     <text class="empty-icon">⭐</text>
     <text class="empty-text">暂无收藏的景点</text>
+    
     <button class="back-btn" bindtap="goBack">返回首页</button>
   </view>
 
-  <!-- 收藏列表 -->
   <view class="fav-list" wx:else>
-    <view class="fav-item" wx:for="{{favPoiList}}" wx:key="id" data-id="{{item.id}}" bindtap="goToDetail">
+    <view class="fav-item" wx:for="{{favPoiList}}" wx:key="id" data-id="{{item._id || item.id}}" bindtap="goToDetail">
       <image class="item-img" src="{{item.img}}" mode="aspectFill"></image>
       <view class="item-info">
         <text class="item-name">{{item.name}}</text>
       </view>
-      <view class="item-op" bindtap="cancelFav" data-index="{{index}}" catchtap>
+      <view class="item-op" catchtap="cancelFav" data-index="{{index}}">
         <text class="cancel-btn">取消收藏</text>
       </view>
     </view>
